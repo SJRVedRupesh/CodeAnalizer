@@ -49,6 +49,9 @@ int main() {
     return 0;
 }`;
 
+const DEFAULT_SQL_BASE = `-- Write your SQL query here
+SELECT * FROM employees LIMIT 5;`;
+
 export default function AnalyzerPage() {
   const { isDark } = useTheme();
 
@@ -82,10 +85,6 @@ export default function AnalyzerPage() {
       const res = await getTemplatesApi();
       if (res.templates) {
         setTemplates(res.templates);
-        // Load default template if empty
-        if (res.templates.cpp && res.templates.cpp.length > 0) {
-          setCode(res.templates.cpp[0].code);
-        }
       }
     } catch (e) {
       console.warn('Unable to load templates from server, using local default');
@@ -100,12 +99,7 @@ export default function AnalyzerPage() {
     setRunResult(null);
     setErrorMsg(null);
     setActiveTab('overview');
-
-    if (templates[newLang] && templates[newLang].length > 0) {
-      setCode(templates[newLang][0].code);
-    } else {
-      setCode(newLang === 'cpp' ? DEFAULT_CPP_BASE : '-- Write your SQL query here\nSELECT * FROM employees LIMIT 5;');
-    }
+    setCode(newLang === 'cpp' ? DEFAULT_CPP_BASE : DEFAULT_SQL_BASE);
   };
 
   // Load a selected template
