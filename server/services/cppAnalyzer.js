@@ -1,0 +1,2 @@
+// cppAnalyzer.js
+module.exports = {};

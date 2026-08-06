@@ -1,0 +1,2 @@
+// sqlAnalyzer.js
+module.exports = {};

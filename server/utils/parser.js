@@ -1,0 +1,2 @@
+// parser.js
+module.exports = {};
