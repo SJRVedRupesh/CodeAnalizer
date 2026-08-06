@@ -39,12 +39,22 @@ import {
 import ComplexityBadge from '../components/ComplexityBadge';
 import SchemaExplorerModal from '../components/SchemaExplorerModal';
 
+const DEFAULT_CPP_BASE = `#include <iostream>
+using namespace std;
+
+int main() {
+    // This statement prints "Hello World"
+    cout << "Hello World";
+
+    return 0;
+}`;
+
 export default function AnalyzerPage() {
   const { isDark } = useTheme();
 
   // Core State
   const [language, setLanguage] = useState('cpp'); // 'cpp' | 'sql'
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState(DEFAULT_CPP_BASE);
   const [customInput, setCustomInput] = useState('');
   const [showInputPanel, setShowInputPanel] = useState(false);
   const [fontSize, setFontSize] = useState(14);
@@ -94,7 +104,7 @@ export default function AnalyzerPage() {
     if (templates[newLang] && templates[newLang].length > 0) {
       setCode(templates[newLang][0].code);
     } else {
-      setCode(newLang === 'cpp' ? '// Write your C++ code here\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, DSA Analyzer!" << endl;\n    return 0;\n}' : '-- Write your SQL query here\nSELECT * FROM employees LIMIT 5;');
+      setCode(newLang === 'cpp' ? DEFAULT_CPP_BASE : '-- Write your SQL query here\nSELECT * FROM employees LIMIT 5;');
     }
   };
 

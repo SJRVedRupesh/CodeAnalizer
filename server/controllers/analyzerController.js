@@ -12,6 +12,22 @@ import { getSchemaOverview } from '../services/sampleDatabase.js';
 const CODE_TEMPLATES = {
   cpp: [
     {
+      id: 'hello_world',
+      title: 'Hello World (Starter Base)',
+      paradigm: 'Basic I/O & Program Structure',
+      timeComplexity: 'O(1)',
+      spaceComplexity: 'O(1)',
+      code: `#include <iostream>
+using namespace std;
+
+int main() {
+    // This statement prints "Hello World"
+    cout << "Hello World";
+
+    return 0;
+}`
+    },
+    {
       id: 'binary_search',
       title: 'Binary Search Algorithm',
       paradigm: 'Divide and Conquer',
