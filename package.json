@@ -1,0 +1,24 @@
+{
+  "name": "dsa-sql-code-analyzer",
+  "version": "1.0.0",
+  "description": "DSA & SQL Code Analyzer full-stack application",
+  "scripts": {
+    "server": "npm start --prefix server",
+    "client": "npm run dev --prefix client",
+    "dev": "npm start --prefix server & npm run dev --prefix client",
+    "start": "npm start --prefix server",
+    "build": "npm run build --prefix client"
+  },
+  "keywords": [
+    "dsa",
+    "sql",
+    "code-analyzer",
+    "react",
+    "vite",
+    "monaco-editor",
+    "nodejs",
+    "express"
+  ],
+  "author": "SJR Ved Rupesh",
+  "license": "MIT"
+}
