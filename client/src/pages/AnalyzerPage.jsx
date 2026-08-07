@@ -156,7 +156,11 @@ export default function AnalyzerPage() {
         setErrorMsg(res.error || 'Failed to analyze code.');
       }
     } catch (err) {
-      setErrorMsg(err.response?.data?.error || err.message || 'Error communicating with analysis engine.');
+      if (err.message === 'Network Error' || !err.response) {
+        setErrorMsg('Network Error: Unable to connect to the backend server (http://localhost:5000). Please ensure the backend is running with "npm start --prefix server".');
+      } else {
+        setErrorMsg(err.response?.data?.error || err.message || 'Error communicating with analysis engine.');
+      }
     } finally {
       setIsAnalyzing(false);
     }
@@ -183,7 +187,11 @@ export default function AnalyzerPage() {
       setRunResult(res);
       setActiveTab('output');
     } catch (err) {
-      setErrorMsg(err.response?.data?.error || err.message || 'Error running code.');
+      if (err.message === 'Network Error' || !err.response) {
+        setErrorMsg('Network Error: Unable to connect to the backend server (http://localhost:5000). Please ensure the backend is running with "npm start --prefix server".');
+      } else {
+        setErrorMsg(err.response?.data?.error || err.message || 'Error running code.');
+      }
     } finally {
       setIsRunning(false);
     }
